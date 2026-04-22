@@ -88,9 +88,9 @@
   .project-card.wide-reverse { grid-column: span 2; display: grid; grid-template-columns: 0.9fr 1.1fr; }
   .project-card.full { grid-column: span 2; }
 
-  .project-screenshot { position: relative; overflow: hidden; background: #0d0d14; min-height: 240px; display: flex; align-items: center; justify-content: center; }
-  .project-card.wide .project-screenshot, .project-card.wide-reverse .project-screenshot { min-height: 320px; }
-  .project-screenshot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; transition: transform 0.5s ease; opacity: 0.92; }
+  .project-screenshot { position: relative; overflow: hidden; background: #0d0d14; display: flex; align-items: flex-start; justify-content: center; }
+  .project-card.wide .project-screenshot, .project-card.wide-reverse .project-screenshot { min-height: 200px; }
+  .project-screenshot img { width: 100%; height: auto; object-fit: contain; display: block; transition: transform 0.5s ease; opacity: 0.92; }
   .project-card:hover .project-screenshot img { transform: scale(1.03); opacity: 1; }
   .screenshot-badge { position: absolute; bottom: 10px; right: 10px; background: rgba(10,10,15,0.85); border: 1px solid var(--accent); color: var(--accent); font-size: 10px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; backdrop-filter: blur(6px); }
 
@@ -297,7 +297,7 @@
 
       <!-- 2. LEAD MONITOR -->
       <div class="project-card reveal">
-        <div class="project-screenshot" style="min-height:220px;">
+        <div class="project-screenshot">
           <img src="img_lead_color.png" alt="Lead Monitor — Esperando Contato">
           <span class="screenshot-badge">Power BI · Live</span>
         </div>
@@ -324,7 +324,7 @@
 
       <!-- 3. BILLING OVERVIEW -->
       <div class="project-card reveal">
-        <div class="project-screenshot" style="min-height:220px;">
+        <div class="project-screenshot">
           <img src="img_billing.png" alt="Visão Geral de Faturamento">
           <span class="screenshot-badge">TOTVS API · Strategic</span>
         </div>
