@@ -124,17 +124,93 @@
   body.lang-en .l-en-inline { display: inline; }
   body.lang-pt .l-pt-inline { display: inline; }
   .l-en-inline, .l-pt-inline { display: none; }
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
     #hero, .section-inner { padding-left: 24px; padding-right: 24px; }
-    .about-grid, .projects-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .projects-grid { grid-template-columns: 1fr; gap: 20px; }
     .project-card.wide, .project-card.wide-reverse { grid-column: span 1; grid-template-columns: 1fr; }
     .project-card.full .project-body { grid-template-columns: 1fr !important; }
     .code-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 8px; text-align: center; }
     .lang-toggle { top: 14px; right: 16px; }
+    h1 { font-size: clamp(36px, 6vw, 64px); }
+    h2 { font-size: clamp(24px, 5vw, 36px); }
+    .hero-sub { font-size: 14px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 16px; }
+    .section-inner { padding: 64px 16px; }
+    #hero { padding: 0 16px; min-height: auto; }
+    h1 { font-size: clamp(28px, 5vw, 48px); }
+    h2 { font-size: clamp(20px, 4vw, 28px); }
+    .hero-label { font-size: 10px; }
+    .hero-sub { font-size: 13px; max-width: 100%; }
+    .hero-actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+    .hero-langs { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .about-text { font-size: 13px; }
+    .skill-label { font-size: 9px; }
+    .skill-items { font-size: 11px; }
+    .project-tag { font-size: 9px; padding: 2px 8px; }
+    h3 { font-size: 15px; margin-bottom: 8px; }
+    .project-desc { font-size: 12px; line-height: 1.75; }
+    .project-body { padding: 20px; }
+    .code-card { padding: 16px; }
+    .code-snippet { font-size: 10px; line-height: 1.6; padding: 8px; }
+    .ticker { animation: ticker 20s linear infinite; }
+    .ticker-item { padding: 0 20px; font-size: 10px; }
+    .lang-toggle { top: 12px; right: 12px; }
+    .contact-inner { padding: 64px 16px; }
+    .contact-links { gap: 8px; flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 13px; }
+    nav { padding: 12px 12px; }
+    .nav-logo { font-size: 13px; }
+    .section-inner { padding: 48px 12px; }
+    #hero { padding: 0 12px; min-height: auto; margin-top: 60px; }
+    .hero-label { font-size: 9px; margin-bottom: 16px; }
+    h1 { font-size: clamp(24px, 5vw, 36px); line-height: 1.1; }
+    h2 { font-size: clamp(18px, 4vw, 24px); }
+    .hero-sub { font-size: 12px; line-height: 1.6; margin-top: 16px; }
+    .hero-actions { margin-top: 24px; gap: 6px; }
+    .btn { padding: 10px 16px; font-size: 11px; }
+    .hero-langs { margin-top: 24px; gap: 4px; }
+    .lang-chip { font-size: 9px; padding: 3px 8px; }
+    .ticker-wrapper { padding: 10px 0; }
+    .ticker-item { padding: 0 12px; font-size: 9px; gap: 12px; }
+    .ticker-dot { font-size: 12px; }
+    .section-header { gap: 12px; margin-bottom: 32px; }
+    .section-num { font-size: 9px; }
+    .about-text { font-size: 12px; line-height: 1.7; }
+    .skill-card { padding: 12px; }
+    .skill-label { font-size: 8px; margin-bottom: 6px; }
+    .skill-items { font-size: 10px; line-height: 1.6; }
+    .project-card { border-radius: 6px; }
+    .project-screenshot { min-height: 180px; }
+    .project-card.wide .project-screenshot { min-height: 200px; }
+    iframe { min-height: 200px !important; }
+    .screenshot-badge { font-size: 8px; padding: 2px 6px; bottom: 6px; right: 6px; }
+    .project-body { padding: 14px; }
+    .project-tag-row { margin-bottom: 8px; gap: 4px; }
+    .project-tag { font-size: 8px; padding: 2px 6px; }
+    h3 { font-size: 13px; margin-bottom: 6px; font-weight: 600; }
+    .project-desc { font-size: 11px; line-height: 1.6; }
+    .impact-pill { font-size: 10px; margin-top: 12px; }
+    .code-card { padding: 12px; }
+    .code-icon { font-size: 20px; margin-bottom: 8px; }
+    .code-card h3 { font-size: 13px; margin-bottom: 6px; }
+    .code-card p { font-size: 11px; }
+    .code-snippet { font-size: 9px; line-height: 1.5; padding: 6px; margin-top: 8px; }
+    .contact-inner { padding: 48px 12px; text-align: center; }
+    .contact-links { gap: 6px; margin-top: 24px; }
+    footer { padding: 16px 12px; font-size: 9px; }
+    .lang-toggle { top: 10px; right: 10px; }
   }
 </style>
 </head>
