@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Rahima Mokeddem — Data Analyst Portfolio</title>
 
-<!-- Open Graph tags: control the link preview card on LinkedIn, WhatsApp, etc. -->
+<!-- Open Graph tags -->
 <meta property="og:title" content="Rahima Mokeddem — Data Analyst & BI Engineer">
 <meta property="og:description" content="Automated data systems connecting CRM, ERP, and the people who use them — Power BI, Python, and API integrations that drive real business outcomes.">
 <meta property="og:image" content="https://rahima-mokeddem.github.io/preview.png">
@@ -80,16 +80,20 @@
   .skill-items { color: var(--muted); font-size: 12px; line-height: 1.8; }
   #projects { background: var(--bg); }
   .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; position: relative; }
   .project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,229,160,0.08); }
   .project-card.wide { grid-column: span 2; display: grid; grid-template-columns: 1.1fr 0.9fr; }
   .project-card.wide-reverse { grid-column: span 2; display: grid; grid-template-columns: 0.9fr 1.1fr; }
   .project-card.full { grid-column: span 2; }
-  .project-screenshot { position: relative; overflow: hidden; background: #0d0d14; display: flex; align-items: center; justify-content: center; }
+  .project-screenshot { position: relative; overflow: visible; background: #0d0d14; }
   .project-card.wide .project-screenshot, .project-card.wide-reverse .project-screenshot { min-height: 200px; }
+  .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #0d0d14; }
+  .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: block; }
+  .video-link { display: block; text-align: center; padding: 10px 12px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-top: 1px solid var(--border); background: rgba(0,229,160,0.04); transition: background 0.2s; }
+  .video-link:hover { background: rgba(0,229,160,0.10); }
   .project-screenshot img { width: 100%; height: auto; object-fit: contain; display: block; transition: transform 0.5s ease; opacity: 0.92; }
   .project-card:hover .project-screenshot img { transform: scale(1.03); opacity: 1; }
-  .screenshot-badge { position: absolute; bottom: 10px; right: 10px; background: rgba(10,10,15,0.85); border: 1px solid var(--accent); color: var(--accent); font-size: 10px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; backdrop-filter: blur(6px); }
+  .screenshot-badge { position: absolute; bottom: 10px; right: 10px; background: rgba(10,10,15,0.85); border: 1px solid var(--accent); color: var(--accent); font-size: 10px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; backdrop-filter: blur(6px); z-index: 10; }
   .project-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
   .project-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
   .project-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; border: 1px solid var(--border); color: var(--muted); background: var(--tag-bg); }
@@ -124,16 +128,51 @@
   body.lang-en .l-en-inline { display: inline; }
   body.lang-pt .l-pt-inline { display: inline; }
   .l-en-inline, .l-pt-inline { display: none; }
+
+  /* =============================================
+     MOBILE / RESPONSIVE FIXES
+     ============================================= */
+  html { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+
   @media (max-width: 1024px) {
+    body::before { display: none; }
+    nav {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background: rgba(10,10,15,0.97);
+    }
+    .glow-orb { filter: blur(70px); opacity: 0.09; }
+    .glow-orb-1 { width: 340px; height: 340px; top: -140px; right: -140px; }
+    .glow-orb-2 { width: 280px; height: 280px; left: -90px; }
+
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
-    #hero, .section-inner { padding-left: 24px; padding-right: 24px; }
+    #hero {
+      min-height: auto;
+      margin-top: 0;
+      padding: 120px 24px 64px;
+    }
+    .section-inner { padding-left: 24px; padding-right: 24px; }
+
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .projects-grid { grid-template-columns: 1fr; gap: 20px; }
-    .project-card.wide, .project-card.wide-reverse { grid-column: span 1; grid-template-columns: 1fr; }
-    .project-card.full .project-body { grid-template-columns: 1fr !important; }
-    .code-grid { grid-template-columns: 1fr; }
+    .project-card.wide, .project-card.wide-reverse {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+    }
+    .project-card.wide .project-screenshot,
+    .project-card.wide-reverse .project-screenshot { min-height: 0; }
+    .project-card.full .project-body {
+      grid-template-columns: 1fr !important;
+      gap: 22px !important;
+      padding: 22px !important;
+    }
+    .project-card.full .code-snippet { min-height: 0 !important; font-size: 11px !important; }
+
     .skills-grid { grid-template-columns: 1fr; }
+    .skills-grid .skill-card { grid-column: 1 / -1 !important; }
+
+    .code-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 8px; text-align: center; }
     .lang-toggle { top: 14px; right: 16px; }
     h1 { font-size: clamp(36px, 6vw, 64px); }
@@ -143,24 +182,22 @@
 
   @media (max-width: 768px) {
     nav { padding: 14px 16px; }
-    .section-inner { padding: 64px 16px; }
-    #hero { padding: 0 16px; min-height: auto; }
-    h1 { font-size: clamp(28px, 5vw, 48px); }
-    h2 { font-size: clamp(20px, 4vw, 28px); }
+    .section-inner { padding: 56px 18px; }
+    #hero { padding: 96px 16px 48px; }
+    h1 { font-size: clamp(30px, 7vw, 48px); }
+    h2 { font-size: clamp(22px, 5vw, 30px); }
     .hero-label { font-size: 10px; }
     .hero-sub { font-size: 13px; max-width: 100%; }
     .hero-actions { flex-direction: column; }
     .btn { width: 100%; justify-content: center; }
     .hero-langs { flex-direction: column; align-items: flex-start; gap: 8px; }
     .about-text { font-size: 13px; }
-    .skill-label { font-size: 9px; }
-    .skill-items { font-size: 11px; }
     .project-tag { font-size: 9px; padding: 2px 8px; }
-    h3 { font-size: 15px; margin-bottom: 8px; }
+    h3 { font-size: 16px; margin-bottom: 8px; }
     .project-desc { font-size: 12px; line-height: 1.75; }
     .project-body { padding: 20px; }
     .code-card { padding: 16px; }
-    .code-snippet { font-size: 10px; line-height: 1.6; padding: 8px; }
+    .code-snippet { font-size: 10px; line-height: 1.6; padding: 10px; }
     .ticker { animation: ticker 20s linear infinite; }
     .ticker-item { padding: 0 20px; font-size: 10px; }
     .lang-toggle { top: 12px; right: 12px; }
@@ -172,11 +209,11 @@
     body { font-size: 13px; }
     nav { padding: 12px 12px; }
     .nav-logo { font-size: 13px; }
-    .section-inner { padding: 48px 12px; }
-    #hero { padding: 0 12px; min-height: auto; margin-top: 60px; }
+    .section-inner { padding: 44px 14px; }
+    #hero { padding: 88px 14px 40px; }
     .hero-label { font-size: 9px; margin-bottom: 16px; }
-    h1 { font-size: clamp(24px, 5vw, 36px); line-height: 1.1; }
-    h2 { font-size: clamp(18px, 4vw, 24px); }
+    h1 { font-size: clamp(26px, 8vw, 38px); line-height: 1.1; }
+    h2 { font-size: clamp(20px, 6vw, 26px); }
     .hero-sub { font-size: 12px; line-height: 1.6; margin-top: 16px; }
     .hero-actions { margin-top: 24px; gap: 6px; }
     .btn { padding: 10px 16px; font-size: 11px; }
@@ -185,32 +222,38 @@
     .ticker-wrapper { padding: 10px 0; }
     .ticker-item { padding: 0 12px; font-size: 9px; gap: 12px; }
     .ticker-dot { font-size: 12px; }
-    .section-header { gap: 12px; margin-bottom: 32px; }
+    .section-header { gap: 12px; margin-bottom: 28px; }
     .section-num { font-size: 9px; }
     .about-text { font-size: 12px; line-height: 1.7; }
     .skill-card { padding: 12px; }
     .skill-label { font-size: 8px; margin-bottom: 6px; }
     .skill-items { font-size: 10px; line-height: 1.6; }
     .project-card { border-radius: 6px; }
-    .project-screenshot { min-height: 180px; }
-    .project-card.wide .project-screenshot { min-height: 200px; }
-    iframe { min-height: 200px !important; }
+    .project-screenshot { min-height: 0; }
     .screenshot-badge { font-size: 8px; padding: 2px 6px; bottom: 6px; right: 6px; }
     .project-body { padding: 14px; }
     .project-tag-row { margin-bottom: 8px; gap: 4px; }
     .project-tag { font-size: 8px; padding: 2px 6px; }
-    h3 { font-size: 13px; margin-bottom: 6px; font-weight: 600; }
+    h3 { font-size: 14px; margin-bottom: 6px; }
     .project-desc { font-size: 11px; line-height: 1.6; }
     .impact-pill { font-size: 10px; margin-top: 12px; }
     .code-card { padding: 12px; }
     .code-icon { font-size: 20px; margin-bottom: 8px; }
     .code-card h3 { font-size: 13px; margin-bottom: 6px; }
     .code-card p { font-size: 11px; }
-    .code-snippet { font-size: 9px; line-height: 1.5; padding: 6px; margin-top: 8px; }
+    .code-snippet { font-size: 9px; line-height: 1.5; padding: 6px; margin-top: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .project-card.full .project-body { padding: 14px !important; gap: 14px !important; }
+    .project-card.full .code-snippet { font-size: 9px !important; line-height: 1.5 !important; }
+    .video-link { font-size: 9px; padding: 8px; }
     .contact-inner { padding: 48px 12px; text-align: center; }
     .contact-links { gap: 6px; margin-top: 24px; }
     footer { padding: 16px 12px; font-size: 9px; }
     .lang-toggle { top: 10px; right: 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .ticker { animation: none !important; }
   }
 </style>
 </head>
@@ -325,10 +368,19 @@
     </div>
     <div class="projects-grid">
 
+      <!-- VIDEO PROJECT -->
       <div class="project-card wide reveal">
-        <div class="project-screenshot" style="padding:0; overflow:hidden;">
-          <iframe width="100%" height="300" src="https://www.youtube.com/embed/UfUnLGABqkU" title="Chatbot CRM Dashboard Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;"></iframe>
-          <span class="screenshot-badge">WhatsApp · CRM · Dashboard</span>
+        <div class="project-screenshot" style="padding:0;">
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube.com/embed/UfUnLGABqkU?rel=0&playsinline=1&modestbranding=1"
+              title="Chatbot CRM Dashboard Demo"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+          <a class="video-link" href="https://www.youtube.com/watch?v=UfUnLGABqkU" target="_blank" rel="noopener">▶ Watch on YouTube</a>
         </div>
         <div class="project-body">
           <div class="project-tag-row">
@@ -583,18 +635,23 @@
 
 <script>
   const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => obs.observe(el));
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
 
   function setLang(lang) {
-    document.body.className = 'lang-' + lang;
+    document.body.classList.remove('lang-en', 'lang-pt');
+    document.body.classList.add('lang-' + lang);
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
     });
